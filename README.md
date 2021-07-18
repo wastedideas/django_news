@@ -18,6 +18,6 @@ Python + Django + PostgreSQL
 
 Приложение развернуто на Heroku и доступно к просмотру по ссылке:
 
-## [Ссылка](https://django-news.herokuapp.com/)
+## [Ссылка](https://django-news-portal-project.herokuapp.com/news)
 
 ![django_news](gif/django_news.gif)
