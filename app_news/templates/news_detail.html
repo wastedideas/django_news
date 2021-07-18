@@ -1,0 +1,32 @@
+{% extends "basic.html" %}
+
+<title>{% block title %}{{ new_detail.new_name }}{% endblock %}</title>
+
+{% block content %}
+    <h2>{{ new_detail.new_name }}</h2>
+    <p>{{ new_detail.new_desc }}</p>
+    <p>
+        <span>Дата публикации: {{ new_detail.new_create }}</span>
+        <span>Новость редактировалась: {{ new_detail.new_edit }}</span>
+    </p>
+    <p>{{ new_detail.new_active_flag }}</p>
+    {% if new_detail.comments.all %}
+        <h3>Комментарии:</h3>
+        <ul>
+            {% for i_comment in new_detail.comments.all %}
+            <li>{{ i_comment.user_name }}: {{ i_comment.comment_text }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>Комментариев нет.</h3>
+    {% endif %}
+    <form method="post" action="">
+        {% csrf_token %}
+        {% if request.user.is_authenticated %}
+           <p>{{ comments_form.comment_text }}</p>
+        {% else %}
+            {{ comments_form.as_p }}
+        {% endif %}
+        <button type="submit">Добавить комментарий</button>
+    </form>
+{% endblock %}

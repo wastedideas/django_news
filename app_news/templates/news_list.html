@@ -1,0 +1,20 @@
+{% extends "basic.html" %}
+
+<title>{% block title %}Новости{% endblock %}</title>
+
+{% block content %}
+    <h2>Новости</h2>
+    {% if news_list %}
+    <ul>
+        {% for new in news_list %}
+        <li>
+            <a style="padding-right: 20px;" href="/news/{{ new.id }}">{{ new.new_name }}</a>
+            <a href="/news/{{ new.id }}/editing">Редактировать</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>Новостей нет.</p>
+    {% endif %}
+    <a href="/news/creating">Создать новость</a>
+{% endblock %}

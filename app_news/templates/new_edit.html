@@ -1,0 +1,12 @@
+{% extends "basic.html" %}
+
+<title>{% block title %}Редактирвоание новости{% endblock %}</title>
+
+{% block content %}
+    <h2>Редактирование новости</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ new_edit_form.as_p }}
+        <button type="submit">Сохранить изменения</button>
+    </form>
+{% endblock %}
